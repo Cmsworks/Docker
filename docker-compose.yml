@@ -19,8 +19,8 @@ services:
         container_name: php-fpm
         build: ./docker/php-fpm
         volumes:
-            - ./www:/var/www
-            - ./docker/logs/cmsworks:/var/www/cmsworks/var/log
+            - ./www:/var/www:cached
+            - ./docker/logs/cmsworks:/var/www/cmsworks/var/log:cached
         environment:
             XDEBUG_CONFIG: "remote_host=host.docker.internal remote_enable=1"
             PHP_IDE_CONFIG: "serverName=Docker"
@@ -36,8 +36,8 @@ services:
         depends_on:
             - php
         volumes:
-            - ./docker/logs/nginx:/var/log/nginx
-            - ./www:/var/www
+            - ./docker/logs/nginx:/var/log/nginx:cached
+            - ./www:/var/www:cached
         networks:
             - internal
     phpmyadmin:
