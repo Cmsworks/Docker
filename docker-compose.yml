@@ -22,7 +22,7 @@ services:
             - ./www:/var/www:cached
             - ./docker/logs/cmsworks:/var/www/cmsworks/var/log:cached
         environment:
-            XDEBUG_CONFIG: "remote_host=host.docker.internal remote_enable=1"
+            XDEBUG_CONFIG: "remote_host=host.docker.internal remote_enable=1 remote_autostart=1 remote_handler=dbgp idekey=PHPSTORM"
             PHP_IDE_CONFIG: "serverName=Docker"
         depends_on:
             - mysql
